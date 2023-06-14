@@ -5,8 +5,10 @@
 }
 
 <h1>Internal diagnostics</h1>
+<a href="/diag/summary">summary</a><br /><br />
 
-<h2>Culture, time and localization</h2>
+
+<h3>Culture, time and localization</h3>
 <table>
     <tr>
         <td>TimeZone</td>
@@ -31,24 +33,31 @@
 <br />
 
 
-<h2>Environment variables</h2>
+<h3>Environment variables</h3>
 <table>
     @{
         var vars = Environment.GetEnvironmentVariables();
 
-        var sortedDict = new SortedDictionary<string, string>();
-
-        foreach (DictionaryEntry entry in vars)
+        if (vars != null)
         {
-            sortedDict.Add(entry.Key.ToString(), entry.Value.ToString());
-        }
+            var sortedDict = new SortedDictionary<string, string>();
 
-        foreach (var entry in sortedDict)
-        {
-            <tr>
-                <td>@entry.Key</td>
-                <td>@entry.Value</td>
-            </tr>
+            foreach (DictionaryEntry entry in vars)
+            {
+                string? key = entry.Key?.ToString();
+                string? value = entry.Value?.ToString();
+
+                if (key != null && value != null)
+                    sortedDict.Add(key, value);
+            }
+
+            foreach (var entry in sortedDict)
+            {
+                <tr>
+                    <td>@entry.Key</td>
+                    <td>@entry.Value</td>
+                </tr>
+            }
         }
     }
 </table>

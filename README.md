@@ -1,11 +1,11 @@
-# IdentityServer in production
-Starter project for the IdentityServer in production training class.
+# Introduction to Containers and Kubernetes
+Starter project for the Introduction to Containers and Kubernetes training class.
 
 For more information about the class visit:
-https://www.tn-data.se
+https://tn-data.se/courses/
 
 Written by Tore Nestenius 
-(C) TN Datakonsult AB 2021
+(C) TN Datakonsult AB 2023
 https://www.tn-data.se
 
 

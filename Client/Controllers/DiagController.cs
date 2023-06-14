@@ -8,5 +8,11 @@ namespace PaymentAPI.Controllers
         {
             return View();
         }
+
+
+        public IActionResult Summary()
+        {
+            return View();
+        }
     }
 }

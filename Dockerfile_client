@@ -1,8 +1,8 @@
-FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 
 WORKDIR /src 
 
-#copy the files from c:\Project -> container
+# Phase #1, copy solution + csproj and restore as distinct layers  ----
 COPY . .
 
 RUN dotnet restore 
@@ -11,14 +11,12 @@ WORKDIR "/src/Client"
 
 RUN dotnet publish Client.csproj -c Release -o /app/Client --no-restore
 
-
 # Phase #2, Build final image ------------------------------------------
-FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS release
+FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS release
 
 COPY --from=build /app/Client .
 
 EXPOSE 80
+EXPOSE 443
 
 ENTRYPOINT ["dotnet", "Client.dll"]  
-
-
