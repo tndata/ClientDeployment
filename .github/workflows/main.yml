@@ -55,5 +55,5 @@ jobs:
       with:
         action: deploy
         manifests: ./kubernetes
-        images: tncontaineregistry.azurecr.io/student1-client:v1 ${{ secrets.REGISTRY_NAME }}.azurecr.io/${{ secrets.USERNAME }}-client:${{ github.sha }}
+        images: ${{ secrets.REGISTRY_NAME }}.azurecr.io/${{ secrets.USERNAME }}-client:${{ github.sha }}
 
