@@ -47,7 +47,7 @@ jobs:
         memory: 0.5
         location: 'northeurope'
         environment-variables: ASPNETCORE_ENVIRONMENT=Production GITHUB__SHA=${{ github.sha }}
-+
+
         # List files
         - shell: bash
           run: ls
